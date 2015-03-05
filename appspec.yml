@@ -1,5 +1,24 @@
-version: 0.0
-os: linux
-files:
-  - source: /
+--- 
+files: 
+  - 
     destination: /var/www/html/locate.myhvacshop.com
+    source: /
+hooks: 
+  AfterInstall: 
+    - 
+      location: scripts/make_softlinks.sh
+      timeout: 180
+  BeforeInstall: 
+    - 
+      location: scripts/makedirs.sh
+      timeout: 180
+os: linux
+permissions: 
+  - 
+    group: apache
+    mode: 777
+    object: /var/www/html/locate.myhvacshop.com
+    owner: apache
+    pattern: "**"
+version: 0.0
+
